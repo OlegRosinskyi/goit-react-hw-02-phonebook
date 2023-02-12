@@ -1,5 +1,8 @@
-const ContactList = ({contacts, filtder, deleteContact}) =>
-{console.log(contacts)
+
+const ContactList = ({ contacts,id, filtder, deleteContact }) =>
+{
+    console.log(contacts)
+    
     return ( 
         <> 
             <ul>
