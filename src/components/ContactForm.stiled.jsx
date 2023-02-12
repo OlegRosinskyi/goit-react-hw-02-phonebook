@@ -9,6 +9,10 @@ export const InputContactForm = styled.input `
 export const LabelContactForm = styled.label `
         display: block;  width: 150px; margin-bottom: 10px;      `        
 export const ButtonContactForm = styled.button `
-        display: block;  width: 100px; margin-bottom: 10px;       ` 
-export const ButtonContactFormStylActiv = styled.button` padding-left: 15px; padding-right: 15px;  
-font-size: 24px; border-radius: 5px; background-color: #00eeff;  `        
+        display: block;  width: 100px; margin-bottom: 10px;   
+         background-color: ${({ value }) => {
+                switch (value) {
+                case true: return '#00eeff';
+                default: return 'white'
+                }
+            } }   ` 

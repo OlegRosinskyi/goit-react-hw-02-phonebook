@@ -3,9 +3,9 @@ import { InputContactForm } from "./ContactForm.stiled";
 import { LabelContactForm } from "./ContactForm.stiled";
 import { ButtonContactForm } from "./ContactForm.stiled";
 
-export const ContactForm = ({ updateContacts, addName }) => {
+export const ContactForm = ({ updateContacts, addName,statusButtomForm }) => {
     
-   
+    
         return (
         <>
                  <BoxContactForm action="/action_page.php" method="get" onSubmit={updateContacts}>
@@ -28,7 +28,7 @@ export const ContactForm = ({ updateContacts, addName }) => {
                         required
                          onChange={addName}
                     />
-                    <ButtonContactForm type="submit" > Add contact </ButtonContactForm>
+                    <ButtonContactForm type="submit" value={statusButtomForm}> Add contact </ButtonContactForm>
                 </BoxContactForm>
                     
         </> )  
