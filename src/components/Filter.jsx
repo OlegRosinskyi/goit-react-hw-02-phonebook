@@ -1,7 +1,8 @@
-const Filetr = ({filtrContact}) =>
+import { BoxFilter } from "./Filtr.stiled";
+const Filetr = ({ filtrContact }) =>
 {
     return (
-        <div>
+        <BoxFilter>
             <h2>Find contacts by name</h2>
             <input
                         type="text"
@@ -11,7 +12,7 @@ const Filetr = ({filtrContact}) =>
                         required
                         onChange={filtrContact}
                     />
-        </div>
+        </BoxFilter>
      )
 }
 export default Filetr;

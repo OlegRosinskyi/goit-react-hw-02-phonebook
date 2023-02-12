@@ -1,4 +1,3 @@
-
 const ContactList = ({ contacts,id, filtder, deleteContact }) =>
 {
     console.log(contacts)

@@ -3,6 +3,9 @@ import { ContactForm } from "./ContactForm";
 import ContactList from "./ContactList";
 import Filter from "./Filter";
 import shortid from "shortid";
+import { AllBox } from "./App.stiled";
+
+//let filtrContactss = [{id: '', name: '', number: ''}];
 
 export class App extends Component {
   state = {
@@ -12,7 +15,7 @@ export class App extends Component {
     {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
     {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
   ],
-    //contacts: [{name:'',telefon:''}],
+    
     name: '',
     number:'',
     filter: ''
@@ -27,7 +30,7 @@ export class App extends Component {
     let Contact = { id: `id-${this.state.name}`, name: `${this.state.name}`, number: `${this.state.number}` };
     let statusIncludeName = nowArr.find(contact => contact.name === Contact.name);
     console.log(statusIncludeName);
-    arrLength > 1 ? (!statusIncludeName ? nowArr.splice(arrLength, 0, Contact,) : statusIncludeName = false) : (nowArr[0].name === '' ? nowArr.splice(arrLength, 0, Contact,) : nowArr = [{ id: '', name: '', number: '' }])
+    arrLength > 1 ? (!statusIncludeName ? nowArr.splice(arrLength, 0, Contact,) : alert(`${this.state.name}  is already in contacts`)) : (nowArr[0].name === '' ? nowArr.splice(arrLength, 0, Contact,) : nowArr = [{ id: '', name: '', number: '' }])
     //console.log(this.state)
     console.log(nowArr); this.setState({ contacts: nowArr });
   }
@@ -36,7 +39,9 @@ export class App extends Component {
   deleteContact = (event) => {
     let ActivElement = Number(event.target.id); let nowArr = this.state.contacts; 
     nowArr.length > 1 ? nowArr.splice(ActivElement, 1):nowArr = [{id: '', name: '', number: ''}];
-    console.log(nowArr); this.setState({ contacts: nowArr })
+      console.log(nowArr); this.setState({ contacts: nowArr })
+   
+    
   }
     
    //  this.setState(({ list }) => {
@@ -47,15 +52,15 @@ export class App extends Component {
   render() {
         //console.log();
         return (
-            <>
-           < div >
+          
+           <  AllBox >
               <h1>Phonebook</h1>
               <ContactForm updateContacts={this.updateContacts} addName={this.addName}/>
               <h2>Contacts</h2>
               <Filter filtrContact={this.filterContact } />
-              <ContactList contacts={this.state.contacts } id={this.nameContactsListId} filtder = {this.state.filter} deleteContact={this.deleteContact}  />
-            </div >
-            </> )  
+              <ContactList contacts={this.state.contacts } id={this.nameContactsListId} filter = {this.state.filter} deleteContact={this.deleteContact}  />
+            </ AllBox >
+           )  
     }
 }
 export default App;
