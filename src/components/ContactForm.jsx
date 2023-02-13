@@ -1,14 +1,34 @@
+import React, { Component } from "react";
 import { BoxContactForm } from "./ContactForm.stiled";
 import { InputContactForm } from "./ContactForm.stiled";
 import { LabelContactForm } from "./ContactForm.stiled";
 import { ButtonContactForm } from "./ContactForm.stiled";
 
-export const ContactForm = ({ updateContacts, addName,statusButtomForm }) => {
+export class ContactForm extends Component{
+    state = {
+        name: '',
+        number: '',
+        statusButtomForm: false,
+     }
+   
+    handleChange = (event) => {
+    event.preventDefault(); //console.log(event); console.log(event.currentTarget.name);
+    console.log(event.currentTarget.value);
+    this.setState({ [event.currentTarget.name]: event.currentTarget.value })
+    }
+    hendleSubmit = (event) => {
+        event.preventDefault();
+        this.setState({ statusButtomForm: true });
+        setTimeout(() => { this.setState({ statusButtomForm: false }) }, 1000);
+        this.props.onSubmit(this.state);
+        //this.resetForm();
+    }
     
-    
+   // resetForm = () => {this.setState({ name: '', number: '', }); };
+    render(){
         return (
         <>
-                 <BoxContactForm action="/action_page.php" method="get" onSubmit={updateContacts}>
+                 <BoxContactForm action="/action_page.php" method="get" onSubmit={this.hendleSubmit}>
                     <LabelContactForm htmlFor="fname">Name</LabelContactForm>
                     < InputContactForm
                         type="text"
@@ -17,7 +37,7 @@ export const ContactForm = ({ updateContacts, addName,statusButtomForm }) => {
                         pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
                         required
-                        onChange={addName}
+                        onChange={this.handleChange}
                     />
                     <LabelContactForm htmlFor="fname">Namber</LabelContactForm>
                     < InputContactForm
@@ -26,12 +46,12 @@ export const ContactForm = ({ updateContacts, addName,statusButtomForm }) => {
                         pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                         required
-                         onChange={addName}
+                         onChange={this.handleChange}
                     />
-                    <ButtonContactForm type="submit" value={statusButtomForm}> Add contact </ButtonContactForm>
+                    <ButtonContactForm type="submit" value={this.state.statusButtomForm}> Add contact </ButtonContactForm>
                 </BoxContactForm>
                     
-        </> )  
+        </> )  }
     };
-
+    export default ContactForm;
 
