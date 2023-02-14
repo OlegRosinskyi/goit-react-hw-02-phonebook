@@ -35,12 +35,17 @@ export class App extends Component {
   filterContact = (event) => { this.setState({ filter: event.currentTarget.value }); }
   
   deleteContact = (event) => {
-    let nowArr = this.state.contacts; 
-    let ActivElement = Number(event.target.id);
+    let nowArr = [];
+    this.state.filter === '' ? nowArr = this.state.contacts: nowArr= this.state.contacts.filter(contact => contact.name.toLowerCase().includes(this.state.filter.toLowerCase()));
+    let deleteContact = nowArr[event.target.id];
+   
+    nowArr = this.state.contacts;
+    let ActivElement = Number(nowArr.indexOf(deleteContact));
     this.setState({ activIdContact: ActivElement });
     setTimeout(() => {
-      this.setState({ activIdContact: NaN }); nowArr.length > 1 ? nowArr.splice(ActivElement, 1):nowArr = [{id: '', name: '', number: ''}];
-      this.setState({ contacts: nowArr }); console.log(nowArr);
+      this.setState({ activIdContact: NaN });
+      nowArr.length > 1 ? nowArr.splice(ActivElement, 1) : nowArr = [{ id: '', name: '', number: '' }];
+      this.setState({ contacts: nowArr }); 
     },200);
 
     
