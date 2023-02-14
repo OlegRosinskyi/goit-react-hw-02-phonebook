@@ -1,5 +1,5 @@
 import { BoxFilter } from "./Filtr.stiled";
-const Filetr = ({ filtrContact }) =>
+const Filetr = ({ filtrContact,value }) =>
 {
     return (
         <BoxFilter>
@@ -11,6 +11,7 @@ const Filetr = ({ filtrContact }) =>
                         title="Name may contain only letters, apostrophe, dash and spaces."
                         required
                         onChange={filtrContact}
+                        value={value}
                     />
         </BoxFilter>
      )

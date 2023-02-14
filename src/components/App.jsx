@@ -33,7 +33,9 @@ export class App extends Component {
         
     }
   filterContact = (event) => { this.setState({ filter: event.currentTarget.value }); }
-  
+
+  resetFilter = () => {this.setState({ filter: '', }); };
+
   deleteContact = (event) => {
     let nowArr = [];
     this.state.filter === '' ? nowArr = this.state.contacts: nowArr= this.state.contacts.filter(contact => contact.name.toLowerCase().includes(this.state.filter.toLowerCase()));
@@ -44,12 +46,10 @@ export class App extends Component {
     this.setState({ activIdContact: ActivElement });
     setTimeout(() => {
       this.setState({ activIdContact: NaN });
-      nowArr.length > 1 ? nowArr.splice(ActivElement, 1) : nowArr = [{ id: '', name: '', number: '' }];
-      this.setState({ contacts: nowArr }); 
-    },200);
-
-    
-  } 
+      nowArr.length > 1 ? nowArr.splice(ActivElement, 1) : nowArr = [{ id: '', name: '', number: '' }]; 
+      this.setState({ contacts: nowArr });  this.resetFilter();
+    }, 200);
+   } 
   render() {
         //console.log();
         return (         
@@ -57,7 +57,7 @@ export class App extends Component {
               <h1>Phonebook</h1>
               <ContactForm onSubmit={this.updateContacts}> </ContactForm>
               <h2>Contacts</h2>
-              <Filter filtrContact={this.filterContact } />
+            <Filter filtrContact={this.filterContact} value={this.state.filter } />
               <ContactList contacts={this.state.contacts } activIdContact={this.state.activIdContact} filter = {this.state.filter} deleteContact={this.deleteContact}  />
             </ AllBox >
            )  
