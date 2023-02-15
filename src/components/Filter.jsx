@@ -11,7 +11,7 @@ const Filetr = ({ filtrContact,value }) =>
                         title="Name may contain only letters, apostrophe, dash and spaces."
                         required
                         onChange={filtrContact}
-                        value={value}
+                        //value={value}
                     />
         </BoxFilter>
      )

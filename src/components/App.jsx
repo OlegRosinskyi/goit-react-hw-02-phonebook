@@ -47,7 +47,7 @@ export class App extends Component {
     setTimeout(() => {
       this.setState({ activIdContact: NaN });
       nowArr.length > 1 ? nowArr.splice(ActivElement, 1) : nowArr = [{ id: '', name: '', number: '' }]; 
-      this.setState({ contacts: nowArr });  this.resetFilter();
+      this.setState({ contacts: nowArr }); // this.resetFilter();
     }, 200);
    } 
   render() {

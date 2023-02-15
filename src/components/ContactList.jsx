@@ -11,7 +11,7 @@ const ContactList = ({ contacts, activIdContact, filter, deleteContact }) =>
 {
    // console.log(contacts)
     let filtrContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
-    if (filtrContacts.length === 0) filtrContacts = contacts; 
+    if (filtrContacts.length === 0) filtrContacts = []; 
     return ( 
         <> 
             <ul>
